@@ -35,4 +35,5 @@ class Environment:
 
         f2=int(np.array_equal(self.sprite, self.target))
 
-        return 20 * (old_dist - new_dist)/(time + 1) - f1 * 30 + f2 * 100
+        return (old_dist - new_dist)/(time + 1) - f1 * 0.5 + (f2 * 5)/(0.9 ** time)
+
