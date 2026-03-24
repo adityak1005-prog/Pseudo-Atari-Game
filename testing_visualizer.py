@@ -16,8 +16,11 @@ class Testing:
     def test(self, Q_stored):
         self.agent.game = Game()
         self.agent.get_state()
-        # old_state = state
-        greedy = np.argmax(Q_stored, axis=0)
+        if (self.game.env.sprite[1] == 9):
+            i = 2
+        else:
+            i = self.game.env.sprite[1] // 3
+        greedy = np.argmax(Q_stored[i], axis=0)
         while not self.agent.game.game_over:
             match greedy[self.agent.state[0]][self.agent.state[1]]:
                 case 0:
@@ -38,5 +41,5 @@ class Testing:
 
 if __name__ == '__main__':
     testing = Testing()
-    Q_stored = np.load('Q_vals.npy')
+    Q_stored = np.load('q_table_data_learnt.npy')
     testing.test(Q_stored)
