@@ -37,6 +37,6 @@ class Game:
         self.clock.tick(60)
 
 if __name__ == '__main__':
-    game = Game()
+    game = Game() 
     while not game.game_over:
         game.step()
